@@ -1,0 +1,102 @@
+﻿@model MvcApplication2.Models.Recipie
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@section scripts{
+    <script>
+        function save() {
+            var a = document.getElementById("rname").value;
+            var b = document.getElementById("recipie").value;
+
+            if (a == null || a == "" || b == null || b == "") {
+                document.getElementById("error").innerHTML = "fill both fields";
+            }
+            else {
+                document.getElementById("error").innerHTML = "";
+
+                var d = { "rname": a, "recipie": b };
+                var settings = {
+                    type: "POST",
+                    dataType: "json",
+                    url: "/Home/UploadRecipie",
+                    //url: "http://localhost:51777/api/Submit2",
+                    data: d,
+                    //data: JSON.stringify([login, password]),
+                    //contentType: false,
+                    success: function (resp) {
+
+                        if (resp.valid == true) {
+                            alert("request / comment posted");
+                            location.href = "@Url.Action("Add", "Home2")";
+                        }
+                        else {
+                            alert("request / comment not added, some error occured");
+                            location.href = "@Url.Action("Index", "Home")";
+                        }
+                    },
+                    error: function (e) {
+                        alert("error");
+                        location.href = "@Url.Action("Index", "Home")";
+                    }
+                }
+                $.ajax(settings);
+            }
+            return false;
+        }
+        function cancel() {
+            location.href = "@Url.Action("Index", "Home2")";
+        }
+    </script>
+}
+<div id="page3">
+    <div class="inner">
+            <div class="main">
+                <section id="content">
+                    <div class="indent">
+                    	<div class="wrapper">
+                        	<article class="col-1">
+                                <div class="indent-left">
+                                    <h3>Add Recipie</h3>
+                                    @if (ViewBag.upload == "1")
+                                    {
+                                        <div>recipie successfully uploaded</div>
+                                    }
+                                    @if (ViewBag.upload == "2")
+                                    {
+                                        <div>could not upload , some error occured</div>
+                                    }
+                                    @if (ViewBag.upload == "3")
+                                    {
+                                        <div>fill all fields to add recipie successfuly</div>
+                                    }
+                                    
+                                    <div class="wrapper indent-bot">
+                                        <form id="contact-form" method="post" action="~/Home2/UpdateRecipie" enctype="multipart/form-data">
+                                            <input type="text" name="id" hidden="hidden" value="@Model.ID" />
+                                            <label><span class="text-form">Name:</span><input name="rname" id="rname" value="@Model.Name" type="text" /></label>
+                                            <label><span class="text-form">Image:</span><input type="file" name="Image"  value="@Model.img" id="Image" /></label>
+                                            <div class="wrapper">
+                                                <div class="text-form">Recipie:</div>
+                                                <div class="extra-wrap">
+                                                    <textarea id="recipie" name="recipie">@Model.Recip</textarea>
+                                                    <div id="error"></div>
+                                                    <div class="clear"></div>
+                                                    <div class="buttons">
+                                                        <input style="background-color:cadetblue;height:40px;width:100px;border-color:black" type="button" value="Cancel" onclick="cancel" />
+                                                        <input style="background-color:cadetblue;height:40px;width:100px;border-color:black" type="submit" value="Update" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <div class="block"></div>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,381 @@
+﻿@{
+    ViewBag.Title = "LogIn";
+}
+@section styles{
+    <style>
+        #bdy {
+            padding: 40px;
+            background-image: url(data:image/png;base64,...==);
+        }
+
+        ul {
+            list-style-type: none;
+            margin-top: 0px;
+        }
+
+        .box {
+            position: relative;
+            z-index: 1;
+            width: 460px;
+            height: 420px;
+            margin: 50px auto 0;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 1px 0 #333;
+            background: -webkit-radial-gradient(0 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), -webkit-radial-gradient(100% 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), -webkit-radial-gradient(100% 0, circle, rgba(204,0,0,0) 29px, #d05353 29px), -webkit-radial-gradient(0 0, circle, rgba(204,0,0,0) 29px, #d05353 29px);
+            background: -moz-radial-gradient(0 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), -moz-radial-gradient(100% 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), -moz-radial-gradient(100% 0, circle, rgba(204,0,0,0) 29px, #d05353 29px), -moz-radial-gradient(0 0, circle, rgba(204,0,0,0) 29px, #d05353 29px);
+            background: -o-radial-gradient(0 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), -o-radial-gradient(100% 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), -o-radial-gradient(100% 0, circle, rgba(204,0,0,0) 29px, #d05353 29px), -o-radial-gradient(0 0, circle, rgba(204,0,0,0) 29px, #d05353 29px);
+            background: -ms-radial-gradient(0 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), -ms-radial-gradient(100% 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), -ms-radial-gradient(100% 0, circle, rgba(204,0,0,0) 29px, #d05353 29px), -ms-radial-gradient(0 0, circle, rgba(204,0,0,0) 29px, #d05353 29px);
+            background: radial-gradient(0 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), radial-gradient(100% 100%, circle, rgba(204,0,0,0) 29px, #d05353 29px), radial-gradient(100% 0, circle, rgba(204,0,0,0) 29px, #d05353 29px), radial-gradient(0 0, circle, rgba(204,0,0,0) 29px, #d05353 29px);
+            background-position: bottom left, bottom right, top right, top left;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+        }
+
+        .tag {
+            position: relative;
+            top: -5px;
+            left: 50%;
+            margin-left: -92px;
+            width: 200px;
+            height: 87px;
+            color: #fff;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 87px;
+            text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+            background-color: #b5ae63;
+            background-size: 2px 2px;
+            background-image: -webkit-linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), -webkit-linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+            background-image: -moz-linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), -moz-linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+            background-image: -o-linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), -o-linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+            background-image: -ms-linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), -ms-linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+            background-image: linear-gradient(45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a), linear-gradient(-45deg, #c0b96a 25%, transparent 25%, transparent 75%, #c0b96a 75%, #c0b96a);
+        }
+
+            .tag:after,
+            .tag:before {
+                position: absolute;
+                left: 0;
+                content: "";
+                width: 100%;
+                z-index: 8;
+            }
+
+            .tag:after {
+                height: 30px;
+                top: 0px;
+                background: -webkit-linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+                background: -moz-linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+                background: -o-linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+                background: -ms-linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+                background: linear-gradient(top,rgba(226,217,124,0) 0%,rgba(226,217,124,1) 40%,rgba(226,217,124,1) 60%,rgba(226,217,124,0) 100%);
+            }
+
+            .tag:before {
+                height: 8px;
+                bottom: -5px;
+                z-index: -1;
+                background: -webkit-radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+                background: -moz-radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+                background: -o-radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+                background: -ms-radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+                background: radial-gradient(ellipse closest-side, #b8b165, #b8b165 0%, #b8b165 70%,#732e2e 99%, transparent);
+                background-size: 8px 8px;
+            }
+
+        div:nth-of-type(3):before,
+        div:nth-of-type(5):before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 5px;
+            border: 1px solid #c9938a;
+            border-color: #c9938a transparent;
+        }
+
+        #form1 {
+            margin: 0 20px;
+            line-height: 30px;
+        }
+
+            input:not([type="checkbox"]) {
+                background: #aa3e3e;
+                box-shadow: inset 0 0 5px rgba(0,0,0,.5),0 1px 1px #da6262;
+                border: none;
+                height: 30px;
+                width: 100%;
+                padding-left: 5px;
+                padding-right: -5px;
+                margin: 20px 0;
+                -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+                -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+                -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+                -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+                transition: border linear 0.2s, box-shadow linear 0.2s;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -o-box-sizing: border-box;
+                -ms-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+                input:not([type="checkbox"]):focus {
+                    outline: 0 none;
+                    box-shadow: inset 0 1px 3px rgba(255,255,255,0.1), 0 0 8px rgba(255,255,255, 0.6);
+                }
+
+        ::-webkit-input-placeholder {
+            color: #d6aaaa;
+            font-weight: bold;
+        }
+
+        button {
+            position: relative;
+            top: 0;
+            border: none;
+            width: 112px;
+            height: 44px;
+            font-weight: bold;
+            color: #b74242;
+            text-shadow: 0 -1px 0 #000;
+            border-radius: 3px;
+            box-shadow: 0 -1px 0 #feeae7,0 1px 0 #976159;
+            background: -webkit-linear-gradient(top,#f8d3cf,#dfafa8);
+            background: -moz-linear-gradient(top,#f8d3cf,#dfafa8);
+            background: -o-linear-gradient(top,#f8d3cf,#dfafa8);
+            background: -ms-linear-gradient(top,#f8d3cf,#dfafa8);
+            background: linear-gradient(top,#f8d3cf,#dfafa8);
+            margin-top: 20px;
+            -webkit-transition: all 0.25s ease-out 0.05s;
+            -moz-transition: all 0.25s ease-out 0.05s;
+            -o-transition: all 0.25s ease-out 0.05s;
+            -ms-transition: all 0.25s ease-out 0.05s;
+            transition: all 0.25s ease-out 0.05s;
+        }
+
+            button:hover {
+                top: 1px;
+                box-shadow: 0 -1px 0 #feeae7,0 2px 0 #976159;
+                background: -webkit-linear-gradient(top,#dfafa9,#e1b2ac);
+                background: -moz-linear-gradient(top,#dfafa9,#e1b2ac);
+                background: -o-linear-gradient(top,#dfafa9,#e1b2ac);
+                background: -ms-linear-gradient(top,#dfafa9,#e1b2ac);
+                background: linear-gradient(top,#dfafa9,#e1b2ac);
+            }
+    </style>
+}
+@section scripts{
+    <script>
+        var flag1 = false,flag2 = false;
+        function loginVerification() {
+            flag1 = false;
+            var filter = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+            var filter2 = /^([a-zA-Z0-9_.-])+@@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+            var a = document.getElementById("login").value;
+
+            if (a == null || a == "") {
+                document.getElementById("loginError").innerHTML = "Enter Email(Login)";
+                document.getElementById("loginError").style.borderColor = "red";
+            }
+            else if (!filter.test(a)) {
+                document.getElementById("loginError").innerHTML = "Enter valid Email(Login)";
+                document.getElementById("loginError").style.borderColor = "red";
+            }
+            else {
+                document.getElementById("loginError").innerHTML = "";
+                document.getElementById("loginError").style.borderColor = "green";
+                flag1 = true;
+            }
+        }
+        function passwordVerification() {
+            flag2 = false;
+            var a = document.getElementById("password").value;
+
+            if (a == null || a == "") {
+                document.getElementById("passwordError").innerHTML = "Enter password";
+                document.getElementById("passwordError").style.borderColor = "red";
+            }
+            else if (a.length < 5) {
+                document.getElementById("passwordError").innerHTML = "password length should be at least 5 letters";
+                document.getElementById("passwordError").style.borderColor = "red";
+            }
+            else {
+                document.getElementById("passwordError").innerHTML = "";
+                document.getElementById("passwordError").style.borderColor = "green";
+                flag2 = true;
+            }
+        }
+        function validation1() {
+            loginVerification();
+            passwordVerification();
+
+            var login = document.getElementById("login").value;
+            var password = document.getElementById("password").value;
+            
+            if (flag1 == true && flag2 == true) {
+                var d = { "login": login, "password": password };
+                var settings = {
+                    type: "POST",
+                    dataType: "json",
+                    url: "/Home/validate",
+                    //url: "http://localhost:51777/api/Submit2",
+                    data: d,
+                    //data: JSON.stringify([login, password]),
+                    //contentType: false,
+                    success: function (resp) {
+
+                        if (resp.valid == true) {
+                            alert("you have successfully signed In");
+                            location.href = "@Url.Action("LogIn", "Home2")";
+                        }
+                        else {
+                            alert("Invalid Email(login) or password");
+                            location.href = "@Url.Action("LogIn", "Home")";
+                        }
+                    },
+                    error: function (e) {
+                        alert("error");
+                        location.href = "@Url.Action("LogIn", "Home")";
+                    }
+                }
+                $.ajax(settings);
+            }
+            else
+                alert("Invalid Email(login) or password");
+            return false;
+        }
+        function validation2() {
+            loginVerification();
+            passwordVerification();
+
+            var login = document.getElementById("login").value;
+            var password = document.getElementById("password").value;
+            
+            if (flag1 == true && flag2 == true) {
+                var d = { "login": login, "password": password };
+                var settings = {
+                    type: "POST",
+                    dataType: "json",
+                    url: "/Home/SignUp",
+                    //url: "http://localhost:51777/api/Submit2",
+                    data: d,
+                    //data: JSON.stringify([login, password]),
+                    //contentType: false,
+                    success: function (resp) {
+
+                        if (resp.valid == false) {
+                            alert("you have successfully signed Up");
+                            location.href = "@Url.Action("LogIn", "Home")";
+                        }
+                        else {
+                            alert("Login Already exists");
+                            location.href = "@Url.Action("LogIn", "Home")";
+                        }
+                    },
+                    error: function (e) {
+                        alert("error");
+                        location.href = "@Url.Action("LogIn", "Home")";
+                    }
+                }
+                $.ajax(settings);
+            }
+            else
+                alert("Invalid Email(login) or password");
+            return false;
+        }
+    </script>
+}
+<div id="page5">
+    <div class="inner">
+        <div class="main">
+            <section id="content">
+                <div class="indent">
+                    <div class="wrapper">
+                        <article class="col-1">
+                            <div class="bg">
+                                <div class="padding">
+                                    <h3 class="p2">Sign In / Sign Up</h3>
+                                    <div class="wrapper p3">
+
+                                        <div id="bdy">
+                                            <div class="box">
+                                                <div id="form1">
+                                                    <div class="tag">Log In</div>
+                                                    <div>Log in to your account or sign up to create one.</div>
+                                                    <div>
+                                                        <input type="email" id="login" placeholder="Email:" onchange="loginVerification()" />
+                                                    </div>
+                                                    <div id="loginError"></div>
+                                                    <div>
+                                                        <input type="password" id="password" placeholder="Password:" onchange="passwordVerification()" />
+                                                    </div>
+                                                    <div id="passwordError"></div>
+                                                    <div>
+                                                        <button onclick="validation1()" type="submit" class="btn">Sign In</button>
+                                                        <button onclick="validation2()" type="submit" class="btn">Sign Up</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="wrapper p3">
+                                        <figure class="img-indent">
+                                            <img src="~/images/page5-img2.jpg" alt="" /></figure>
+                                        <div class="extra-wrap">
+                                            <h6>Sit aspernatur aut odit aut fugited quia consequuntur magni dolores qui ratione voluptatem. </h6>
+                                            <p class="p1">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
+                                            <a class="button-2" href="#">Read More</a>
+                                        </div>
+                                    </div>
+                                    <div class="wrapper img-indent-bot">
+                                        <figure class="img-indent">
+                                            <img src="~/images/page5-img3.jpg" alt="" /></figure>
+                                        <div class="extra-wrap">
+                                            <h6>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</h6>
+                                            <p class="p1">Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
+                                            <a class="button-2" href="#">Read More</a>
+                                        </div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <figure class="img-indent">
+                                            <img src="~/images/page5-img4.jpg" alt="" /></figure>
+                                        <div class="extra-wrap">
+                                            <h6>Sit aspernatur aut odit aut fugited quia consequuntur magni dolores qui ratione voluptatem. </h6>
+                                            <p class="p1">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
+                                            <a class="button-2" href="#">Read More</a>
+                                        </div>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </article>
+                        @*<article class="col-2">
+                            <h3 class="border-bot p2">Our Archive</h3>
+                            <h6 class="color-3">At vero eos et accusamus et iusto odio dignissimos </h6>
+                            <p>Qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                            <figure class="p2">
+                                <img src="~/images/page5-img5.jpg" alt="" /></figure>
+                            <ul class="list-1 img-indent-bot">
+                                <li><a href="#">Similique sunt in culpa qui officia</a></li>
+                                <li><a href="#">Saepe eveniet voluptates repudian</a></li>
+                                <li><a href="#">Deserunt mollitia animi id est</a></li>
+                                <li><a href="#">Laborum et dolorum fugait harum</a></li>
+                                <li><a href="#">Quidem rerum facilis expedita</a></li>
+                                <li><a href="#">Nam libero tempore cum soluta</a></li>
+                            </ul>
+                            <ul class="list-1">
+                                <li><a href="#">Nobis eligendi optio cumque nihil</a></li>
+                                <li><a href="#">Impedit quo minus id quod maxime</a></li>
+                                <li><a href="#">Placeat facere possimus, omnis</a></li>
+                                <li><a href="#">Voluptas assumenda omnis dolor </a></li>
+                                <li><a href="#">Temporibus autem quibusdam</a></li>
+                                <li><a href="#">Officiis debitis rerum necessitati</a></li>
+                            </ul>
+                        </article>*@
+                    </div>
+                </div>
+            </section>
+            <div class="block"></div>
+        </div>
+    </div>
+</div>

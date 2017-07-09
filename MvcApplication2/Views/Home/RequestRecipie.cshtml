@@ -1,0 +1,140 @@
+﻿@model List<MvcApplication2.Models.Request>
+@{
+    ViewBag.Title = "About";
+}
+@section scripts{
+    <script>
+        function validate()
+        {
+            var a = document.getElementById("rname").value;
+            var b = document.getElementById("request").value;
+
+            if (a == null || a == "" || b == null || b == "") {
+                document.getElementById("error").innerHTML = "fill both fields";
+            }
+            else {
+                document.getElementById("error").innerHTML = "";
+              
+                var d = { "rname": a, "request": b };
+                var settings = {
+                    type: "POST",
+                    dataType: "json",
+                    url: "/Home/request",
+                    //url: "http://localhost:51777/api/Submit2",
+                    data: d,
+                    //data: JSON.stringify([login, password]),
+                    //contentType: false,
+                    success: function (resp) {
+
+                        if (resp.valid == true) {
+                            alert("request / comment posted");
+                            location.href = "@Url.Action("Index", "Home")";
+                        }
+                        else {
+                            alert("request / comment not added, some error occured");
+                            location.href = "@Url.Action("Index", "Home")";
+                        }
+                    },
+                    error: function (e) {
+                        alert("error");
+                        location.href = "@Url.Action("Index", "Home")";
+                    }
+                }
+                $.ajax(settings);
+            }
+            return false;
+        }
+    </script>
+    
+}
+<div id="page2">
+    <div class="inner">
+            <div class="main">
+                <section id="content">
+                    <div class="indent">
+                    	<div class="wrapper">
+                        	<article class="col-1">
+                                 <div class="bg">
+                                    <div class="padding">
+                                        <h3 class="p2">Requests and Comments</h3>
+                                        @{
+                                            if(ViewBag.list == "notempty")
+                                            {
+                                            for(int i = 0;i < Model.Count;i++)
+                                            {
+                                        
+                                        <div class="wrapper indent-bot">
+                                            @if(i % 2 == 0)
+                                            {
+                                        	<div class="column-1" style="border:groove;margin-left:3cm">
+                                            	<div class="wrapper">
+                                                    <div class="extra-wrap">
+                                                    	<div class="margin-top">
+                                                           
+                                                            <h4>@Model[i].Name : </h4>
+                                                            
+                                                            <h5 class="p1">@Model[i].Req</h5>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                            <div class="column-2" style="border:groove;margin-left:1cm">
+                                            	<div class="wrapper">
+                                                    <div class="extra-wrap">
+                                                    	<div class="margin-top">
+                                                             
+                                                            <h4>@Model[i].Name : </h4>
+                                                            
+                                                            <h5 class="p1">@Model[i].Req</h5>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            }
+                                        </div>
+                                        }
+                                        }
+                                        else
+                                        {
+                                                <p>some error occured , cant load the data</p>
+                                            }
+                                        }
+                                </div>
+                                    </div>
+                                <div class="indent-left">
+                                    <h3>Request / Comment</h3>
+                                    <div class="wrapper indent-bot">
+                                        <div>
+                                            <label><span class="text-form">Your Name :</span><input name="rname" id="rname" type="text" /></label>
+                     
+                                            <div class="wrapper">
+                                                <div class="text-form">Request:</div>
+                                                <div class="extra-wrap">
+                                                    <textarea id="request" name="request"></textarea>
+                                                    <div id="error"></div>
+                                                    <div class="clear"></div>
+                                                    <div class="buttons">
+                                                        <input style="background-color:cadetblue;height:40px;width:100px;border-color:black" type="button" onclick="document.getElementById('contact-form').reset()" value="Clear" />
+                                                        <input style="background-color:cadetblue;height:40px;width:100px;border-color:black" type="submit" value="Save" onclick="validate()" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="col-2">
+                            	
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <div class="block"></div>
+            </div>
+        </div>
+</div>

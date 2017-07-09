@@ -1,0 +1,39 @@
+﻿@model MvcApplication2.Models.Recipie
+@{
+    ViewBag.Title = "Recipie";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+<h2>Recipie</h2>
+<div id="page4">
+    <div class="inner">
+            <div class="main">
+                <section id="content">
+                    <div class="indent">
+                    	<div class="wrapper">
+                        	<article class="col-1">
+                                <div class="bg">
+                                    <div class="padding">
+                                        <h3 class="p2">Recipie</h3>
+                                        <div class="wrapper indent-bot">
+                                        	<div class="column-1">
+                                            	<div class="wrapper">
+                                                	<figure class="img-indent"><a href="#"><img height="120" width="120" src="~/UploadedImages/@Model.img" alt="" /></a></figure>
+                                                    <div class="extra-wrap">
+                                                    	<div class="margin-top">
+                                                            <h4>@Model.Name</h4>
+                                                            <h6>@Model.Recip</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <div class="block"></div>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,209 @@
+﻿@model List<MvcApplication2.Models.Recipie>
+@{
+    ViewBag.Title = "MyRecipies";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@section scripts{
+    <script>
+        function del() {
+            var a = document.getElementById("ID").value;
+            var d = { "id": a};
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                url: "/Home2/DelRecipie",
+                //url: "http://localhost:51777/api/Submit2",
+                data: d,
+                //data: JSON.stringify([login, password]),
+                //contentType: false,
+                success: function (resp) {
+
+                    if (resp.valid == true) {
+                        alert("Recipie deleted");
+                        location.href = "@Url.Action("MyRecipies", "Home2")";
+                        }
+                        else {
+                            alert("");
+                            location.href = "@Url.Action("MyRecipies", "Home2")";
+                        }
+                    },
+                    error: function (e) {
+                        alert("error");
+                        location.href = "@Url.Action("MyRecipies", "Home2")";
+                    }
+                }
+            $.ajax(settings);
+            return false;
+        }
+        function del1() {
+            var a = document.getElementById("ID1").value;
+            var d = { "id": a };
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                url: "/Home2/DelRecipie",
+                //url: "http://localhost:51777/api/Submit2",
+                data: d,
+                //data: JSON.stringify([login, password]),
+                //contentType: false,
+                success: function (resp) {
+
+                    if (resp.valid == true) {
+                        alert("Recipie deleted");
+                        location.href = "@Url.Action("Index", "Home2")";
+                    }
+                    else {
+                        alert("");
+                        location.href = "@Url.Action("Index", "Home2")";
+                        }
+                },
+                error: function (e) {
+                    alert("error");
+                    location.href = "@Url.Action("Index", "Home2")";
+                    }
+            }
+                $.ajax(settings);
+                return false;
+        }
+        function update() {
+            
+            var a = document.getElementById("ID").value;
+            var d = { "id": a };
+            alert(a);
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                url: "/Home2/Editt",
+                //url: "http://localhost:51777/api/Submit2",
+                data: d,
+                //data: JSON.stringify([login, password]),
+                //contentType: false,
+                
+                
+            }
+            $.ajax(settings);
+            return false;
+        }
+        function update1() {
+            var a = document.getElementById("ID1").value;
+            var d = { "id": a };
+            var settings = {
+                type: "POST",
+                dataType: "json",
+                url: "/Home2/Editt",
+                //url: "http://localhost:51777/api/Submit2",
+                data: d,
+                //data: JSON.stringify([login, password]),
+                //contentType: false,
+                
+                error: function (e) {
+                    alert("error");
+                    location.href = "@Url.Action("Index", "Home2")";
+                }
+            }
+            $.ajax(settings);
+            return false;
+        }
+    </script>
+}
+<div id="page4">
+    <div class="inner">
+            <div class="main">
+                <section id="content">
+                    <div class="indent">
+                    	<div class="wrapper">
+                        	<article class="col-1">
+                                
+                                <div class="bg">
+                                    <div class="padding">
+                                        <h3 class="p2">Recipies</h3>
+                                        @{
+                                            if(ViewBag.list == "notempty")
+                                            {
+                                            for(int i = 0;i < Model.Count;i++)
+                                            {
+                                        
+                                        <div class="wrapper indent-bot">
+                                            @if(i % 2 == 0)
+                                            {
+                                        	<div class="column-1">
+                                                <form action="~/Home3/Recipie" method="post">
+                                            	<div class="wrapper">
+                                                    <input type="text" id="ID" name="ID" hidden="hidden" value="@Model[i].ID" />
+                                                	<figure class="img-indent"><a href="#"><img height="120" width="120" src="~/UploadedImages/@Model[i].img" alt="" /></a></figure>
+                                                    <div class="extra-wrap">
+                                                    	<div class="margin-top">
+                                                            <h6>@Model[i].Name</h6>
+                                                            <input type="submit" class="link" value="Read Recipie" />
+                                                            <br />
+                                                            
+                                                            
+                                      
+                                                            <input type="button" class="link" value="Delete" onclick="del()" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    </form>
+                                                <form  action="~/Home2/Edit" method="post">
+                                                    <input type="text" id="iid" name="iid" hidden="hidden" value="@Model[i].ID" />
+                                                                <input type="submit" class="link" value="Update" />
+                                                            </form>
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                            <div class="column-2">
+                                                <form action="~/Home3/Recipie" method="post">
+                                            	<div class="wrapper">
+                                                    <input type="text" id="ID1" name="ID" hidden="hidden" value="@Model[i].ID" />
+                                                	<figure class="img-indent"><a href="#"><img height="120" width="120" src="~/UploadedImages/@Model[i].img" alt="" /></a></figure>
+                                                    <div class="extra-wrap">
+                                                    	<div class="margin-top">
+                                                            <h6>@Model[i].Name</h6>
+                                                            <input type="submit" class="link" value="Read Recipie" />
+                                                         
+                                                            <br />
+                                                            <input type="button" class="link" value="Delete" onclick="del1()" />
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                     </form>
+                                                <form  action="~/Home2/Edit" method="post">
+                                                    <input type="text" name="iid" hidden="hidden" value="@Model[i].ID" />
+                                                                <input type="submit" class="link" value="Update" />
+                                                            </form>
+                                                </div>
+                                            }
+                                            </div>
+                                            }
+                                        
+                                        }
+                                        else
+                                        {
+                                                <p>data not found</p>
+                                        }
+                                        
+                                        }
+                                        
+                                </div>
+                                    </div>
+                            </article>
+                            <article class="col-2">
+                            	<h3 class="border-bot">Search Recipes</h3>
+                                <div class="img-indent-bot">
+                                    
+                                    <form method="post" action="~/Home2/Recipie" enctype="multipart/form-data">
+                                        <input placeholder="Recipie" type="text" name="str" id="str" />
+                                        
+                                        <input type="submit" value="Search" />
+                                       
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <div class="block"></div>
+            </div>
+        </div>
+</div>
